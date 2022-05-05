@@ -3,7 +3,16 @@ import { ref,  } from 'vue'
 import { activeData } from '../compositionAPI/global';
 const compontentsArr = ref([{
   name: 'ef-layout',
-  childrens: ['test text'],
+  value: '递归组件-1',
+  childrens: [{
+    name: 'ef-layout',
+    value: '递归组件-1-1',
+    childrens: [],
+    class: [],
+    props: [],
+    events: [],
+    styles: []
+  }],
   class: [],
   props: [],
   events: [],
@@ -11,7 +20,16 @@ const compontentsArr = ref([{
 },
 {
   name: 'ef-layout',
-  childrens: ['test text'],
+  value: '递归组件-2',
+  childrens: [{
+    name: 'ef-layout',
+    value: '递归组件-2-1',
+    childrens: [],
+    class: [],
+    props: [],
+    events: [],
+    styles: []
+  }],
   class: [],
   props: [],
   events: [],
@@ -30,11 +48,12 @@ const dragstartHandler = (e, item) => {
   <div class="left">
     <component
     v-for="item in compontentsArr"
-    :key="item.name"
+    :key="item.value"
     :is="item.name"
     :class="item.class"
     :styles="item.styles"
     :childrens="item.childrens"
+    :value="item.value"
     draggable="true"
     @dragstart="dragstartHandler($event, item)"
     >
@@ -51,7 +70,7 @@ const dragstartHandler = (e, item) => {
   max-width: 240px;
   flex-direction: column;
   justify-content: center;
-  background-color: rgb(146, 145, 145);
+  background-color: rgb(216, 216, 216);
   // background-color: rgb(34, 95, 72);
   color: rgb(0, 0, 0);
 }

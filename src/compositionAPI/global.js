@@ -27,6 +27,7 @@ export function addComponent () {
     const item = activeData.currentCompontent;
     console.log('item', item);
     if (!item) return;
-    const cloneItem = cloneDeep(componentMap[item])
+    console.log('componentMap[item]', componentMap[item.name]);
+    const cloneItem = cloneDeep(item)
     userPage.value.push(cloneItem);
 }

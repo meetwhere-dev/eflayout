@@ -24,13 +24,13 @@ const handleDragOver = e => {
 @dragover="handleDragOver"
 >
   <Grid />
-  <ef-layout>hahah</ef-layout>
   <Component
   v-for="item in userPage"
   :key="item.id"
   :is="item.name"
+  v-bind="item"
   >
-
+   {{ item.childrens }}
   </Component>
 </div>
 
@@ -43,6 +43,6 @@ const handleDragOver = e => {
   display: flex;
   position: relative;
   overflow: auto;
-  background-color: rgb(34, 95, 72);
+  background-color: rgb(238, 238, 238);
 }
 </style>

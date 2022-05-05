@@ -2,6 +2,7 @@
 
 defineProps({
   childrens: Array,
+  value: String,
   styles: Object 
 })
 // const styles = ref({
@@ -11,9 +12,20 @@ defineProps({
 
 <template>
   <div class="layout">
-    {{childrens}}
-    <slot></slot>
-  </div>
+    {{value}}
+    <Component
+      v-for="item in childrens"
+      :key="item.value"
+      :is="item.name"
+      :class="item.class"
+      :styles="item.styles"
+      :childrens="item.childrens"
+      :value="item.value"
+      draggable="true"
+      @dragstart="dragstartHandler($event, item)"
+    >
+    </Component>
+    </div>
 </template>
 
 <style scoped>
